@@ -67,11 +67,11 @@ Your implementation (a script, some kind of executable, etc - language/implement
 ### rev.1.2
 
  - Designed for local network monitoring of incoming/outgiong queues
- - The following requirements have been met:
-  - runs on Ubuntu 14.x and 16.x (built and tested on Ubuntu 16.04.2) indefinitely until killed by the user
-  - monitors both TCP/UDP, both Send / Receive queues
-  - local and remote ip's and ports
-  - ability to input user defined parameters for both 'send and receive'
+  - The following requirements have been met:
+    - runs on Ubuntu 14.x and 16.x (built and tested on Ubuntu 16.04.2) indefinitely until killed by the user
+    - monitors both TCP/UDP, both Send / Receive queues
+    - local and remote ip's and ports
+    - ability to input user defined parameters for both 'send and receive'
 
 #### - Outstanding Requirements
 - A defined REST source/datastore to store critical events/alerts via HTTP
