@@ -107,12 +107,12 @@ print_menu() {
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
 		3)
-			watch -n1 ss -atn | tee ss_tcp_output.txt
+			watch -n1 ss -atn | tee ss_tcp_output.csv
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
 		4)
-			watch -n1 ss -aun | tee ss_udp_output.txt
-			#watch -n1 'ss -aun' | tee ss_udp_output.txt
+			watch -n1 ss -aun | tee ss_udp_output.csv
+			#watch -n1 'ss -aun' | tee ss_udp_output.csv
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
 		5)
