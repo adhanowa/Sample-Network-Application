@@ -221,7 +221,7 @@ fi
 
 #Construct performance data output
 
-PERFDATA="'avg_tcp_received_pckts_min'=${AVGPCKTREC%%.*};$rwarn;$rcrit 'avg_tcp_unknown_port_pckts_min'=${AVGPCKTRECUNK%%.*};$uwarn;$ucrit 'avg_tcp_errors_pckts_min'=${AVGPCKTRECERR%%.*};$ewarn;$ecrit 'avg_tcp_sent_pckts_min'=${AVGPCKTSENT%%.*};$swarn;$scrit"
+PERFDATA=", 'avg_tcp_received_pckts_min'=${AVGPCKTREC%%.*};$rwarn;$rcrit, 'avg_tcp_unknown_port_pckts_min'=${AVGPCKTRECUNK%%.*};$uwarn;$ucrit, 'avg_tcp_errors_pckts_min'=${AVGPCKTRECERR%%.*};$ewarn;$ecrit, 'avg_tcp_sent_pckts_min'=${AVGPCKTSENT%%.*};$swarn;$scrit"
 
 #Alerting logic (since bash can not handle floating point comparisions, we use bc for the purpose)
 
@@ -309,7 +309,7 @@ if  echo "$EXITCODES" | grep -q 2;then
 	echo "CRITICAL: $MSGNAGIOS|$PERFDATA"
 	echo "CRITICAL: $MSGNAGIOS|$PERFDATA" | logger
 	# logger above and the file redirect below are temporary until I have our REST source in place
-	echo "CRITICAL: $MSGNAGIOS|$PERFDATA" | while IFS= read -r line; do echo "< $(date): > < Seconds since Jan. 1st, 1970: $(date +%s) > $line"; done >> tcp_redirect_output.txt
+	echo "CRITICAL: $MSGNAGIOS|$PERFDATA" | while IFS= read -r line; do echo ", $(date), Seconds since Jan. 1st, 1970: $(date +%s), $line"; done >> tcp_redirect_output.txt
 	exit 2;
 elif  echo "$EXITCODES" | grep -q 1;then
 	echo "WARNING: $MSGNAGIOS|$PERFDATA"
