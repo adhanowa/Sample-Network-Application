@@ -23,8 +23,8 @@ Your implementation (a script, some kind of executable, etc - language/implement
 
 # Release Notes
 
-** The tool currently logs to file, and the Ubuntu system log for all critical events
-** An HTTP web based servicee for storing critical event data will be avaiable shortly
+ - The tool currently logs to file, and the Ubuntu system log for all critical events
+ - An HTTP web based servicee for storing critical event data will be avaiable shortly
 
 ## Prerequisites
  - run tool on Ubuntu 14.x / 16.x
