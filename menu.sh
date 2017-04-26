@@ -8,7 +8,7 @@ AUTHOR="2017, Avneet Dhanowa"
 while :
 do
 
-exec 1> >(logger -s -t $(basename $0)) 2>&1
+# exec 1> >(logger -s -t $(basename $0)) 2>&1
 
 print_version() {
     echo "$VERSION $AUTHOR"
@@ -89,10 +89,11 @@ print_help() {
 	echo "4. Display All UDP Sockets"
 	echo "5. Monitor TCP Sockets with Critical Alerting (Send & Receive)"
 	echo "6. Monitor UDP Sockets with Critical Alerting (Send & Receive)"
-	echo "7. Link to WebServer"
-	echo "8. Exit"
+	echo "7. Enter custom 'ss' command: "
+	echo "8. Link to WebServer"
+	echo "9. Exit"
         # get input from the user
-	read -p "Enter your choice [ 1 - 8 ] " choice
+	read -p "Enter your choice [ 1 - 9 ] " choice
         # make decision using case..in..esac
 	case $choice in
 		1)
@@ -132,12 +133,22 @@ print_help() {
 			watch -n2 "./check_udp_stats.sh $prammies2 "
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
-
 		7)
+			echo ""
+		    echo "Coming Soon."
+		    echo "Examples: . "
+		    #read prammies2
+			#echo "You entered $prammies2 "
+			# watch -n2 "cd ~/PycharmProjects/tcp-udp-sockets-monitor/scripts/ && ./check_udp_stats.sh $prammies2 "
+			# watch -n2 "./check_udp_stats.sh $prammies2 "
+			#read -p "Press [Enter] key to continue..." readEnterKey
+			;;
+
+		8)
 			echo "Link to webserver coming soon"
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
-		8)
+		9)
 			echo "This software is free to use; however if you use it for commercial purposes, you will"
 			echo "owe Avi One Billion Dollars."
 			echo "Have a great day!"
