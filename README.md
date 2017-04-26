@@ -23,6 +23,9 @@ Your implementation (a script, some kind of executable, etc - language/implement
 
 # Release Notes
 
+** The tool currently logs to file, and the Ubuntu system log for all critical events
+** An HTTP web based servicee for storing critical event data will be avaiable shortly
+
 ## Prerequisites
  - run tool on Ubuntu 14.x / 16.x
  - iproute2
@@ -72,13 +75,13 @@ Your implementation (a script, some kind of executable, etc - language/implement
 #### - Outstanding Requirements
 - a defined REST source/datastore to store critical events/alerts via HTTP
  - There are a few options here:
-   - a python web based server (several classes available) that accepts / stores / retreives HTTP methods with text payloads
-   - a web server with a database, preferrably a key/value pair type solution
-   - stream alerts/data to a cloud datastore
-   - use Google's 'BigQuery' service to create a able to store incoming data
-   - post data using curl commands
-   - MySQL or PostgreSQL would be a solid candidate for backend repository
-    - there is a URL, however there is currently no data (http://104.198.245.133/post-file)
-    - the tool currently logs to file, and the system log for all critical events
+       - a python web based server (several classes available) that accepts / stores / retreives HTTP methods with text payloads
+       - a web server with a database, preferrably a key/value pair type solution
+       - stream alerts/data to a cloud datastore
+       - use Google's 'BigQuery' service to create a able to store incoming data
+       - post data using curl commands
+       - MySQL or PostgreSQL would be a solid candidate for backend repository
+        - there is a URL, however there is currently no data (http://104.198.245.133/post-file)
+
 
 
