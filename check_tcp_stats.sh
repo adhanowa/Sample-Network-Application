@@ -6,6 +6,7 @@ AUTHOR="2017, Avneet Dhanowa, avneet@dhanowa.com"
 
 TEMPFILE=/tmp/.prevudpstats$(id -nu)
 
+
 print_version() {
     echo "$VERSION $AUTHOR"
 }

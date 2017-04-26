@@ -24,9 +24,8 @@ Your implementation (a script, some kind of executable, etc - language/implement
 # Release Notes
 
 ## Prerequisites
- - Ubuntu 14.x / 16.c
+ - run tool on Ubuntu 14.x / 16.x
  - iproute2
- -
 
 ## Suggestions / Unknowns
  - I would advice clients the following:
@@ -36,7 +35,7 @@ Your implementation (a script, some kind of executable, etc - language/implement
      - unknown/undefined scope of use (single user, multi user, etc.)
      - unknown target audience / details
          - is the tool being developed for a new hire, client or seasoned techies?
-     - avoid exposing sensitive data on the internet by sending query parameters and results via HTTP
+     - avoid exposing sensitive data to the internet by sending data clear text
         - at a very minimum, use HTTPS
         - log events to a centralized system that can ingest the logs, and make them searchable
         - for medium size and large size companies, I would advise deploying a centralized logging
