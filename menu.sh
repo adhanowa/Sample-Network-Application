@@ -8,6 +8,8 @@ AUTHOR="2017, Avneet Dhanowa"
 while :
 do
 
+exec 1> >(logger -s -t $(basename $0)) 2>&1
+
 print_version() {
     echo "$VERSION $AUTHOR"
 }

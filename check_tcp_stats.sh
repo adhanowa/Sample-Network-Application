@@ -10,6 +10,8 @@ print_version() {
     echo "$VERSION $AUTHOR"
 }
 
+exec 1> >(logger -s -t $(basename $0)) 2>&1
+
 print_help() {
     print_version $PROGNAME $VERSION
     echo ""
@@ -304,7 +306,7 @@ fi
 ####Generate nagios output
 if  echo "$EXITCODES" | grep -q 2;then
 	echo "CRITICAL: $MSGNAGIOS|$PERFDATA"
-	echo "CRITICAL: $MSGNAGIOS|$PERFDATA" | while IFS= read -r line; do echo "< $(date) > < Seconds since Jan. 1st, 1970: $(date +%s) > $line"; done >> tcp_redirect_output.txt
+	echo "CRITICAL: $MSGNAGIOS|$PERFDATA" | while IFS= read -r line; do echo "< $(date): > < Seconds since Jan. 1st, 1970: $(date +%s) > $line"; done >> tcp_redirect_output.txt
 	exit 2;
 elif  echo "$EXITCODES" | grep -q 1;then
 	echo "WARNING: $MSGNAGIOS|$PERFDATA"
