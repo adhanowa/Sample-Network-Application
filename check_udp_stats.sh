@@ -10,7 +10,7 @@ print_version() {
     echo "$VERSION $AUTHOR"
 }
 
-exec 1> >(logger -s -t $(basename $0)) 2>&1
+# exec 1> >(logger -s -t $(basename $0)) 2>&1
 
 print_help() {
     print_version $PROGNAME $VERSION
@@ -307,6 +307,8 @@ fi
 ####Generate nagios output
 if  echo "$EXITCODES" | grep -q 2;then
     echo "CRITICAL: $MSGNAGIOS|$PERFDATA"
+    echo "CRITICAL: $MSGNAGIOS|$PERFDATA" | logger
+    # logger above and the file redirect below are temporary until I have our REST source in place
 	echo "CRITICAL: $MSGNAGIOS|$PERFDATA" | while IFS= read -r line; do echo "< $(date): > < Seconds since Jan. 1st, 1970: $(date +%s) > $line"; done >> udp_redirect_output.txt
 	exit 2;
 elif  echo "$EXITCODES" | grep -q 1;then
