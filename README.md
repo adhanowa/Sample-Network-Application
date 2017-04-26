@@ -23,8 +23,9 @@ Your implementation (a script, some kind of executable, etc - language/implement
 
 # Release Notes
 
- - The tool currently logs to file, and the Ubuntu system log for all critical events
- - An HTTP web based servicee for storing critical event data will be avaiable shortly
+ - The tool currently logs to file and the Ubuntu system log for all critical events
+ - An HTTP web based service for storing critical event data will be avaiable shortly
+ - Typically, I would like to store and retreive data via JSON key value pairs
 
 ## Prerequisites
  - Run tool on Ubuntu 14.x / 16.x
