@@ -1,7 +1,7 @@
 # Sample-Network-Application
 Tool to monitor and alert on TCP/UDP send and receive queues/buffers
 
-## KixEye Requirements
+## Requirements
 
 Produce a tool which can be run on a Ubuntu linux machine (14.x/16.x - your choice, but please specify!) which will monitor per-socket send and receive queues (buffers), both tcp and udp, and in both directions (both server (listener) and client sockets).
 
@@ -21,6 +21,23 @@ Your implementation (a script, some kind of executable, etc - language/implement
   - how to execute the tool
   - the query string param(s) that will be sent to the specified URL with the data for each result
 
+# Release Notes
+
+## Suggestions / Unknowns
+ - I would advice clients the following:
+     - always avoid sending sensitive data over HTTP
+     - there are ALOT of free and retail products avaiable that would exceed current requirements
+       - save labour costs and avoid 'reinventing the wheel'
+     - unknown/undefined scope of use (single user, multi user, etc.)
+     - unknown target audience / details
+         - is the tool being developed for a new hire, client or seasoned techies?
+     - avoid exposing sensitive data on the internet by sending query parameters and results via HTTP
+        - at a very minimum, use HTTPS
+        - log events to a centralized system that can ingest the logs, and make them searchable
+        - for medium size and large size companies, I would advise deploying a centralized logging
+          'gather/store/make searchable' type solution (logstash, Splunk, etc.)
+         -
+
 ## Installation
 
 1. Download zip file or clone the git pacakge from https://github.com/adhanowa/Sample-Network-Application.git
@@ -30,12 +47,15 @@ Your implementation (a script, some kind of executable, etc - language/implement
 
     chmod u+x menu.sh
 
-5. Launch the ./menu.sh file in a terminal prompt
+5. Launch the ./menu.sh file in a terminal prompt:
+
+    ./menu.sh
+
 6. Ensure to read the 'help' file for passing parameters
 
 ## Change Control
 
-### rev.1.1
+### rev.1.2
 
  - designed for local network monitoring of incoming/outgiong queues
  - The following requirements have been met:
@@ -44,8 +64,11 @@ Your implementation (a script, some kind of executable, etc - language/implement
   - local and remote ip's and ports
   - ability to input user defined parameters for both 'send and receive'
 
-   #### - Outstanding requirements:
-    - a defined REST source/datastore to store query details
-    - There is a URL, however there is currently no data (http://104.198.245.133/post-file)
+#### - Outstanding Requirements
+- a defined REST source/datastore to store critical events query
+- defined query parameters
+
+    - there is a URL, however there is currently no data (http://104.198.245.133/post-file)
+    - the tool currently logs to file, and the system log for all critical events
 
 
