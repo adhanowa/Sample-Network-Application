@@ -32,6 +32,8 @@ Your implementation (a script, some kind of executable, etc - language/implement
      - always avoid sending sensitive data over HTTP
      - there are ALOT of free and retail products avaiable that would exceed current requirements
        - save labour costs and avoid 'reinventing the wheel'
+       - typically, this solution here would be better suited for a monitoring solution
+         such Nagios or Zabbix, as 'service checks'
      - unknown/undefined scope of use (single user, multi user, etc.)
      - unknown target audience / details
          - is the tool being developed for a new hire, client or seasoned techies?
@@ -40,7 +42,6 @@ Your implementation (a script, some kind of executable, etc - language/implement
         - log events to a centralized system that can ingest the logs, and make them searchable
         - for medium size and large size companies, I would advise deploying a centralized logging
           'gather/store/make searchable' type solution (logstash, Splunk, etc.)
-         -
 
 ## Installation
 
@@ -75,7 +76,8 @@ Your implementation (a script, some kind of executable, etc - language/implement
    - a web server with a database, preferrably a key/value pair type solution
    - stream alerts/data to a cloud datastore
    - use Google's 'BigQuery' service to create a able to store incoming data
-   - MySQL or PostgreSQL would be a solid candidate for backend repository for alerts
+   - post data using curl commands
+   - MySQL or PostgreSQL would be a solid candidate for backend repository
     - there is a URL, however there is currently no data (http://104.198.245.133/post-file)
     - the tool currently logs to file, and the system log for all critical events
 
