@@ -68,18 +68,19 @@ Your implementation (a script, some kind of executable, etc - language/implement
 
  - Designed for local network monitoring of incoming/outgiong queues
   - The following requirements have been met:
-    - runs on Ubuntu 14.x and 16.x (built and tested on Ubuntu 16.04.2) indefinitely until killed by the user
-    - monitors both TCP/UDP, both Send / Receive queues
-    - local and remote ip's and ports
-    - ability to input user defined parameters for both 'send and receive'
+    - Runs on Ubuntu 14.x and 16.x (built and tested on Ubuntu 16.04.2) indefinitely until killed by the user
+    - Monitors both TCP/UDP, both Send / Receive queues
+    - Local and remote ip's and ports
+    - Ability to input user defined parameters for both 'send and receive'
 
 #### - Outstanding Requirements
 - A defined REST source/datastore to store critical events/alerts via HTTP
  - There are a few options here:
-    - a python web based server (several classes available) that accepts / stores / retreives HTTP methods with text payloads
-    - a web server with a database, preferrably a key/value pair type solution
-    - stream alerts/data to a cloud datastore
-    - use Google's 'BigQuery' service to create a able to store incoming data
+    - A python web based server (several classes available) that accepts / stores / retreives HTTP methods with text payloads
+    - A web server with a database, preferrably a key/value pair type solution
+    - Stream alerts/data to a cloud datastore
+    - Use Google's 'BigQuery' service to create a able to store incoming data
+    - Post critical event data to encrypted/private SLACK channel
     - post data using curl commands
     - MySQL or PostgreSQL would be a solid candidate for backend repository
     - there is a URL, however there is currently no data (http://104.198.245.133/post-file)
