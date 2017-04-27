@@ -221,19 +221,19 @@ fi
 
 #Construct performance data output
 
-PERFDATA=", 'avg_udp_received_pckts_min'=${AVGPCKTREC%%.*};$rwarn;$rcrit , 'avg_udp_unknown_port_pckts_min'=${AVGPCKTRECUNK%%.*};$uwarn;$ucrit , 'avg_udp_errors_pckts_min'=${AVGPCKTRECERR%%.*};$ewarn;$ecrit , 'avg_udp_sent_pckts_min'=${AVGPCKTSENT%%.*};$swarn;$scrit"
+PERFDATA="'avg_udp_received_pckts_min'=${AVGPCKTREC%%.*};$rwarn;$rcrit , 'avg_udp_unknown_port_pckts_min'=${AVGPCKTRECUNK%%.*};$uwarn;$ucrit , 'avg_udp_errors_pckts_min'=${AVGPCKTRECERR%%.*};$ewarn;$ecrit , 'avg_udp_sent_pckts_min'=${AVGPCKTSENT%%.*};$swarn;$scrit"
 
 #Alerting logic (since bash can not handle floating point comparisions, we use bc for the purpose)
 
 
 #Check upper unknown count unknown critical
 if [ $(echo "$AVGPCKTRECUNK > $ucrit" | bc -l) -eq 1 ];then
-    MSGNAGIOS="$MSGNAGIOS""$AVGPCKTRECUNK pckts/min unknown ports greater then threshold $ucrit:: "
+    MSGNAGIOS="$MSGNAGIOS""$AVGPCKTRECUNK pckts/min unknown ports greater then threshold $ucrit, "
     EXITCODES="$EXITCODES"" 2"
 else
     if [ $(echo "$AVGPCKTRECUNK > $uwarn" | bc -l) -eq 1 ];then
     #Check upper unknown count unknown warning
-        MSGNAGIOS="$MSGNAGIOS""$AVGPCKTRECUNK pckts/min unknown ports greater then threshold $uwarn:: "
+        MSGNAGIOS="$MSGNAGIOS""$AVGPCKTRECUNK pckts/min unknown ports greater then threshold $uwarn, "
         EXITCODES="$EXITCODES"" 1"
     fi
 fi
@@ -241,12 +241,12 @@ fi
 
 #Check upper error count errors critical
 if [ $(echo "$AVGPCKTRECERR > $ecrit" | bc -l) -eq 1 ];then
-    MSGNAGIOS="$MSGNAGIOS""$AVGPCKTRECERR pckts/min error greater then threshold $ecrit:: "
+    MSGNAGIOS="$MSGNAGIOS""$AVGPCKTRECERR pckts/min error greater then threshold $ecrit, "
     EXITCODES="$EXITCODES"" 2"
 #Check upper error count errors warning
 else
     if [ $(echo "$AVGPCKTRECERR > $ewarn" | bc -l) -eq 1 ];then
-        MSGNAGIOS="$MSGNAGIOS""$AVGPCKTRECERR pckts/min error greater then threshold $ewarn:: "
+        MSGNAGIOS="$MSGNAGIOS""$AVGPCKTRECERR pckts/min error greater then threshold $ewarn, "
         EXITCODES="$EXITCODES"" 1"
     fi
 fi
@@ -254,12 +254,12 @@ fi
 
 #Check upper count received critical
 if [ $(echo "$AVGPCKTREC > $rcrit" | bc -l) -eq 1 ];then
-    MSGNAGIOS="$MSGNAGIOS""$AVGPCKTREC pckts/min received greater then threshold $rcrit:: "
+    MSGNAGIOS="$MSGNAGIOS""$AVGPCKTREC pckts/min received greater then threshold $rcrit, "
     EXITCODES="$EXITCODES"" 2"
 #Check upper count received warning
 else
     if [ $(echo "$AVGPCKTREC > $rwarn" | bc -l) -eq 1 ];then
-        MSGNAGIOS="$MSGNAGIOS""$AVGPCKTREC pckts/min received greater then threshold $rwarn:: "
+        MSGNAGIOS="$MSGNAGIOS""$AVGPCKTREC pckts/min received greater then threshold $rwarn, "
         EXITCODES="$EXITCODES"" 1"
     fi
 fi
@@ -267,12 +267,12 @@ fi
 
 #Check upper count sent critical
 if [ $(echo "$AVGPCKTSENT > $scrit" | bc -l) -eq 1 ];then
-    MSGNAGIOS="$MSGNAGIOS""$AVGPCKTSENT pckts/min sent greater then threshold $scrit:: "
+    MSGNAGIOS="$MSGNAGIOS""$AVGPCKTSENT pckts/min sent greater then threshold $scrit, "
     EXITCODES="$EXITCODES"" 2"
 #Check upper count sent warning
 else
     if [ $(echo "$AVGPCKTSENT > $swarn" | bc -l) -eq 1 ];then
-        MSGNAGIOS="$MSGNAGIOS""$AVGPCKTSENT pckts/min sent greater then threshold $swarn:: "
+        MSGNAGIOS="$MSGNAGIOS""$AVGPCKTSENT pckts/min sent greater then threshold $swarn, "
         EXITCODES="$EXITCODES"" 1"
     fi
 fi
@@ -282,24 +282,24 @@ fi
 
 #Check lower count received critical
 if [ $(echo "$AVGPCKTREC < $lrcrit" | bc -l) -eq 1 ];then
-    MSGNAGIOS="$MSGNAGIOS""$AVGPCKTREC pckts/min received lower then threshold $lrcrit:: "
+    MSGNAGIOS="$MSGNAGIOS""$AVGPCKTREC pckts/min received lower then threshold $lrcrit, "
     EXITCODES="$EXITCODES"" 2"
 #Check lower count received warning
 else
     if [ $(echo "$AVGPCKTREC < $lrwarn" | bc -l) -eq 1 ];then
-        MSGNAGIOS="$MSGNAGIOS""$AVGPCKTREC pckts/min received lower then threshold $lrwarn:: "
+        MSGNAGIOS="$MSGNAGIOS""$AVGPCKTREC pckts/min received lower then threshold $lrwarn, "
         EXITCODES="$EXITCODES"" 1"
     fi
 fi
 
 #Check lower count sent critical
 if [ $(echo "$AVGPCKTSENT < $lscrit" | bc -l) -eq 1 ];then
-    MSGNAGIOS="$MSGNAGIOS""$AVGPCKTSENT pckts/min sent lower then threshold $lscrit:: "
+    MSGNAGIOS="$MSGNAGIOS""$AVGPCKTSENT pckts/min sent lower then threshold $lscrit, "
     EXITCODES="$EXITCODES"" 2"
 #Check lower count sent warning
 else
     if [ $(echo "$AVGPCKTSENT < $lswarn" | bc -l) -eq 1 ];then
-        MSGNAGIOS="$MSGNAGIOS""$AVGPCKTSENT pckts/min sent lower then threshold $lswarn:: "
+        MSGNAGIOS="$MSGNAGIOS""$AVGPCKTSENT pckts/min sent lower then threshold $lswarn, "
         EXITCODES="$EXITCODES"" 1"
     fi
 fi
@@ -309,7 +309,7 @@ if  echo "$EXITCODES" | grep -q 2;then
     echo "CRITICAL: $MSGNAGIOS|$PERFDATA"
     echo "CRITICAL: $MSGNAGIOS|$PERFDATA" | logger
     # logger above and the file redirect below are temporary until I have our REST source in place
-	echo "CRITICAL: $MSGNAGIOS|$PERFDATA" | while IFS= read -r line; do echo " $(date), Seconds since Jan. 1st, 1970: $(date +%s), $line"; done >> udp_redirect_output.csv
+	echo "CRITICAL: $MSGNAGIOS|$PERFDATA" | while IFS= read -r line; do echo "$(date), Seconds since 01/01/1970: $(date +%s), $line"; done >> udp_redirect_output.csv
 	exit 2;
 elif  echo "$EXITCODES" | grep -q 1;then
 	echo "WARNING: $MSGNAGIOS|$PERFDATA"
@@ -318,6 +318,6 @@ elif  echo "$EXITCODES" | grep -q 3;then
 	echo "UNKNOWN: $MSGNAGIOS|$PERFDATA"
 	exit 3;
 else
-	echo "OK: everything within thresholds  | $PERFDATA"
+	echo "OK: everything within thresholds | $PERFDATA"
 	exit 0
 fi
