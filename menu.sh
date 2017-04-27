@@ -108,6 +108,7 @@ print_menu() {
 			;;
 		3)
 			echo "Start web server to store critical alerts"
+			echo "Users can also query the alerts."
 			./web_server_store_json.py
 			# watch -n1 ss -atn | tee ss_tcp_output.csv
 			read -p "Press [Enter] key to continue..." readEnterKey
