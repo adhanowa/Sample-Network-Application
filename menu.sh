@@ -2,7 +2,6 @@
 
 PROGNAME=`basename $0`
 VERSION="Version 1.1,"
-AUTHOR="2017, Avneet Dhanowa"
 
 # set an infinite loop
 while :

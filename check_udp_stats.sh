@@ -2,7 +2,6 @@
 
 PROGNAME=`basename $0`
 VERSION="Version 1.0.0,"
-AUTHOR="2017, Avneet Dhanowa, avneet@dhanowa.com"
 
 TEMPFILE=/tmp/.prevudpstats$(id -nu)
 
