@@ -91,7 +91,7 @@ print_menu() {
 	echo "5. Display All UDP Sockets"
 	echo "6. Monitor TCP Sockets with Critical Alerting (Send & Receive)"
 	echo "7. Monitor UDP Sockets with Critical Alerting (Send & Receive)"
-	echo "8. Link to WebServer"
+	echo "8. Link to WebServer - http://localhost:8080"
 	echo "9. Exit"
         # get input from the user
 	read -p "Enter your choice [ 1 - 9 ] " choice
@@ -107,7 +107,7 @@ print_menu() {
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
 		3)
-			echo "Start web server to store critical alerts"
+			echo "Start local web server to store critical alerts."
 			echo "Users can also query the alerts."
 			./web_server_store_json.py
 			# watch -n1 ss -atn | tee ss_tcp_output.csv
@@ -143,7 +143,7 @@ print_menu() {
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
 		8)
-			echo "Link to webserver coming soon"
+			echo "Link to web server - http://localhost:8080"
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
 		9)
