@@ -21,15 +21,41 @@ Your implementation (a script, some kind of executable, etc - language/implement
   - How to execute the tool
   - The query string param(s) that will be sent to the specified URL with the data for each result
 
-# Release Notes
+## Prerequisites
+ - Run tool on Ubuntu 14.x / 16.x
+ - Install package iproute2, if not alredy installed
+ - Python v2.x
 
+## Usage
+ - This tool is more a 'proof of concept', many features require more of optimiztion
+ - Critical alert data is posted via curl HTTP POST calls to a virtual python web framework
+ - Critical alert data is retreivable via curl HTTP GET calls
+ - These aformentioned features still require automation and scheduled frequency
+ - Above processes are currently run manually
+
+### Example
+ - curl -X POST --data "@./udp_redirect_output.csv" localhost:8080/store.json
+ - curl -X GET localhost:8080/store.json
+
+## Installation
+
+1. Download zip file or clone the git pacakge from https://github.com/adhanowa/Sample-Network-Application.git
+2. Extract the package to a folder of your choosing
+3. Open a terminal application and change directory to the extracted files
+4. You will need to make the executable, with the following command:
+
+    chmod u+x menu.sh
+
+5. Launch the ./menu.sh file in a terminal prompt:
+
+    ./menu.sh
+
+6. Ensure to read the 'help' file for passing parameters
+
+# Release Notes
  - The tool currently logs to file and the Ubuntu system log for all critical events
  - An HTTP web based service for storing critical event data will be avaiable shortly
  - Typically, I would like to store and retreive data via JSON key value pairs
-
-## Prerequisites
- - Run tool on Ubuntu 14.x / 16.x
- - Need package iproute2
 
 ## Suggestions / Unknowns
  - I would advice clients the following:
@@ -46,21 +72,6 @@ Your implementation (a script, some kind of executable, etc - language/implement
         - log events to a centralized system that can ingest the logs, and make them searchable
         - for medium size and large size companies, I would advise deploying a centralized logging
           'gather/store/make searchable' type solution (logstash, Splunk, etc.)
-
-## Installation
-
-1. Download zip file or clone the git pacakge from https://github.com/adhanowa/Sample-Network-Application.git
-2. Extract the package to a folder of your choosing
-3. Open a terminal application and change directory to the extracted files
-4. You will need to make the executable, with the following command:
-
-    chmod u+x menu.sh
-
-5. Launch the ./menu.sh file in a terminal prompt:
-
-    ./menu.sh
-
-6. Ensure to read the 'help' file for passing parameters
 
 ## Change Control
 
