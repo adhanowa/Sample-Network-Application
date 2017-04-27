@@ -85,11 +85,12 @@ print_menu() {
 	echo "-------------------------------"
 	echo "1. Print Help for Setting Monitor Thresholds"
 	echo "2. Sockets Summary"
-	echo "3. Display All TCP Sockets"
-	echo "4. Display All UDP Sockets"
-	echo "5. Monitor TCP Sockets with Critical Alerting (Send & Receive)"
-	echo "6. Monitor UDP Sockets with Critical Alerting (Send & Receive)"
-	echo "7. Enter custom 'ss' command: "
+	echo "3. Start local web server for storing and viewing critical"
+	echo "   alerts. Records can be retreived via HTTP methods GET/POST"
+	echo "4. Display All TCP Sockets"
+	echo "5. Display All UDP Sockets"
+	echo "6. Monitor TCP Sockets with Critical Alerting (Send & Receive)"
+	echo "7. Monitor UDP Sockets with Critical Alerting (Send & Receive)"
 	echo "8. Link to WebServer"
 	echo "9. Exit"
         # get input from the user
@@ -106,15 +107,23 @@ print_menu() {
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
 		3)
-			watch -n1 ss -atn | tee ss_tcp_output.csv
+			echo "Start web server to store critical alerts"
+			echo "Open a command prompt / terminal, execute the script"
+			echo "using the full path, as per below"
+			echo "/usr/bin/python2.7 /full/path/to/Sample-Network-Application/web_server_store_json.py"
+			# watch -n1 ss -atn | tee ss_tcp_output.csv
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
 		4)
+			watch -n1 ss -atn | tee ss_tcp_output.csv
+			read -p "Press [Enter] key to continue..." readEnterKey
+			;;
+		5)
 			watch -n1 ss -aun | tee ss_udp_output.csv
 			#watch -n1 'ss -aun' | tee ss_udp_output.csv
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
-		5)
+		6)
             echo ""
 		    echo "Enter Critical thresholds for TCP Queues (See 'Help' for more info). Default: 0 "
 		    echo "Example -ec 100 -sc 100. See 'Help' for more info. "
@@ -124,7 +133,7 @@ print_menu() {
 			watch -n2 "./check_tcp_stats.sh $prammies1 "
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
-		6)
+		7)
 			echo ""
 		    echo "Enter Critical thresholds for UDP Queues (See 'Help' for more info). Default: 0 "
 		    echo "Example -ec 100 -sc 100. See 'Help' for more info. "
@@ -134,17 +143,6 @@ print_menu() {
 			watch -n2 "./check_udp_stats.sh $prammies2 "
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
-		7)
-			echo ""
-		    echo "Coming Soon."
-		    echo "Examples: . "
-		    #read prammies2
-			#echo "You entered $prammies2 "
-			# watch -n2 "cd ~/PycharmProjects/tcp-udp-sockets-monitor/scripts/ && ./check_udp_stats.sh $prammies2 "
-			# watch -n2 "./check_udp_stats.sh $prammies2 "
-			#read -p "Press [Enter] key to continue..." readEnterKey
-			;;
-
 		8)
 			echo "Link to webserver coming soon"
 			read -p "Press [Enter] key to continue..." readEnterKey
