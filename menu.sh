@@ -108,9 +108,7 @@ print_menu() {
 			;;
 		3)
 			echo "Start web server to store critical alerts"
-			echo "Open a command prompt / terminal, execute the script"
-			echo "using the full path, as per below"
-			echo "/usr/bin/python2.7 /full/path/to/Sample-Network-Application/web_server_store_json.py"
+			./web_server_store_json.py
 			# watch -n1 ss -atn | tee ss_tcp_output.csv
 			read -p "Press [Enter] key to continue..." readEnterKey
 			;;
